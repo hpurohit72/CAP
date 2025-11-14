@@ -1,0 +1,5 @@
+scapy
+flask
+psutil
+numpy
+scikit-learn
