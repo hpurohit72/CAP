@@ -2,6 +2,7 @@ from collections import defaultdict, deque
 from logger import log_alert
 from config import PORT_SCAN_THRESHOLD, ANOMALY_FEATURE_WINDOW, ANOMALY_THRESHOLD
 import numpy as np
+from reputation import check_ip_reputation
 
 class IDSDetector:
     def __init__(self):
@@ -57,5 +58,6 @@ class IDSDetector:
             self.detect_port_scan(packet)
             self.detect_suspicious_flags(packet)
             self.detect_anomaly(packet)
+            check_ip_reputation(src_ip)
         except Exception as e:
             print("Error processing packet:", e)
